@@ -28,6 +28,10 @@ public class Customer {
 		this.orders = orders;
 	}
 	
+	public Customer() {
+		// TODO Auto-generated constructor stub
+	}
+
 	//getters and setters
 	public Long getId() {
 		return id;

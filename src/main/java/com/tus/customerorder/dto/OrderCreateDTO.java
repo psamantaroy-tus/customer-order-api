@@ -3,6 +3,7 @@ package com.tus.customerorder.dto;
 import jakarta.validation.constraints.NotNull;
 
 public class OrderCreateDTO {
+	/*
 
 	//added validations for these fields
     @NotNull(message = "Order date is required")
@@ -10,6 +11,6 @@ public class OrderCreateDTO {
 
     @NotNull(message = "Amount is required")
     private Double amount;
-
+*/
    
 }
