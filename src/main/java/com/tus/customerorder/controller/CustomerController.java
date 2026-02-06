@@ -35,7 +35,7 @@ public class CustomerController {
         return customerservice.getAllCustomers();
     }
 
-    // 4) Delete customer //result not expected
+    // 4) Delete customer 
     @DeleteMapping("/delete/{id}")
     public String deleteCustomer(@PathVariable Long id) {
         customerservice.deleteCustomer(id);
