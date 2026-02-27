@@ -1,6 +1,5 @@
 package com.tus.customerorder.dto;
 
-import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class OrderCreateDTO {
@@ -13,17 +12,17 @@ public class OrderCreateDTO {
     @NotNull(message = "Amount is required")
     private Double amount;
 */	
-	private LocalDate OrderDate;
-	private double amount;
+   private LocalDate orderDate;
+    private Double amount;
 	
 	public OrderCreateDTO() {}
 
 	public LocalDate getOrderDate() {
-		return OrderDate;
+		return orderDate;
 	}
 
 	public void setOrderDte(LocalDate orderDate) {
-		OrderDate = orderDate;
+		orderDate = orderDate;
 	}
 
 	public double getAmount() {
