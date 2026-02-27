@@ -14,7 +14,10 @@ public class Order {
 	@JoinColumn(name = "customer_id") //FK in h2 database
 	private Customer customer;
 	
-	//constructor
+	//constructors
+	
+	public Order() {}
+	
 	public Order(Long id, LocalDate orderDate, Double amount, Customer customer) {
 		super();
 		this.id = id;
@@ -22,6 +25,7 @@ public class Order {
 		this.amount = amount;
 		this.customer = customer;
 	}
+		
 	//getters and setters
 	public Long getId() {
 		return id;

@@ -9,12 +9,15 @@ public class OrderDTO {
     private Double amount;
     
     //constructor
+    public OrderDTO() {	}
+    
     public OrderDTO(Long id, LocalDate orderDate, Double amount) {
 		super();
 		this.id = id;
 		this.orderDate = orderDate;
 		this.amount = amount;
-	}
+	}	
+	
 	public Long getId() {
 		return id;
 	}
