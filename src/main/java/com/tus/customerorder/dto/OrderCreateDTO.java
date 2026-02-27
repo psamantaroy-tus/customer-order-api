@@ -13,17 +13,17 @@ public class OrderCreateDTO {
     @NotNull(message = "Amount is required")
     private Double amount;
 */	
-	private LocalDate OrderDte;
+	private LocalDate OrderDate;
 	private double amount;
 	
 	public OrderCreateDTO() {}
 
 	public LocalDate getOrderDate() {
-		return OrderDte;
+		return OrderDate;
 	}
 
-	public void setOrderDte(LocalDate orderDte) {
-		OrderDte = orderDte;
+	public void setOrderDte(LocalDate orderDate) {
+		OrderDate = orderDate;
 	}
 
 	public double getAmount() {
