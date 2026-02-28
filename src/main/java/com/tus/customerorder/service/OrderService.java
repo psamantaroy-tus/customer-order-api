@@ -14,6 +14,10 @@ import java.util.stream.Collectors;
 
 import javax.management.relation.RelationNotFoundException;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+
 @Service
 public class OrderService {
 
@@ -77,7 +81,7 @@ public class OrderService {
         orderRepository.delete(order);
     }
     
-    //5. get order by filtering start to end order date
+    //5. Get order by date range filtering
     public List<OrderDTO> getOrdersByDateRange(LocalDate start, LocalDate end) {
         //Find filtered entities from repository
         List<Order> orders = orderRepository.findByOrderDateBetween(start, end);
@@ -86,8 +90,20 @@ public class OrderService {
         return orders.stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
-    }
+    } 
     
+    //6. Get paginated orders
+    public Page<OrderDTO> getPaginatedOrders(int page, int size) {
+        // Create a Pageable object
+        Pageable pageable = PageRequest.of(page, size);
+        
+        // Fetch the page of entities
+        Page<Order> orderPage = orderRepository.findAll(pageable);
+        
+        //Map the Page of entities to a Page of DTOs
+        return orderPage.map(this::convertToDTO);
+    }
+   
     // Helper: convert Entity → DTO
     private OrderDTO convertToDTO(Order order) {
         OrderDTO dto = new OrderDTO();

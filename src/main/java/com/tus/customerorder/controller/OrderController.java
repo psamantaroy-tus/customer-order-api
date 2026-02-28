@@ -53,4 +53,15 @@ public class OrderController {
         // filtering by date range
         return orderService.getOrdersByDateRange(start, end);
     }
+    
+    //6) Get all Orders by paginated orders
+    //using @RequestParam annotation for pagination    
+    @GetMapping("/allpaginatedorders")
+    public org.springframework.data.domain.Page<OrderDTO> getAllOrders(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "3") int size) {
+        
+        // This demonstrates the pagination strategy required by the brief [cite: 61]
+        return orderService.getPaginatedOrders(page, size);
+    }
 }
