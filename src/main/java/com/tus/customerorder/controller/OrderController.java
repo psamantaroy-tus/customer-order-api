@@ -5,6 +5,7 @@ import com.tus.customerorder.dto.OrderCreateDTO;
 import com.tus.customerorder.service.OrderService;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -41,5 +42,15 @@ public class OrderController {
     @DeleteMapping("/{orderId}")
     public void deleteOrder(@PathVariable Long orderId) {
         orderService.deleteOrder(orderId);
+    }
+    
+    //5) Get order by filtering date range
+    @GetMapping("/filter")
+    public List<OrderDTO> getOrdersByDate(
+            @RequestParam("start") @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) LocalDate start,
+            @RequestParam("end") @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) LocalDate end) {
+        
+        // filtering by date range
+        return orderService.getOrdersByDateRange(start, end);
     }
 }

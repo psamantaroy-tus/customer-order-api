@@ -1,18 +1,15 @@
 package com.tus.customerorder.dto;
 
 import java.time.LocalDate;
+import jakarta.validation.constraints.NotNull;
 
 public class OrderCreateDTO {
-	/*
-
-	//added validations for these fields
+	
+	//validate date inputs using jakarta annotation to ensure date is not null
     @NotNull(message = "Order date is required")
-    private String orderDate; // will convert to LocalDate in service
+    private LocalDate orderDate;
 
-    @NotNull(message = "Amount is required")
-    private Double amount;
-*/	
-   private LocalDate orderDate;
+    @NotNull(message = "Amount is required")   
     private Double amount;
 	
 	public OrderCreateDTO() {}
@@ -33,5 +30,5 @@ public class OrderCreateDTO {
 		this.amount = amount;
 	};
 	
-   
+	  
 }

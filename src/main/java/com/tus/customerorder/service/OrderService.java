@@ -8,6 +8,7 @@ import com.tus.customerorder.repository.CustomerRepository;
 import com.tus.customerorder.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,15 +50,7 @@ public class OrderService {
                 .collect(Collectors.toList());
     }
 
-    // Helper: convert Entity → DTO
-    private OrderDTO convertToDTO(Order order) {
-        OrderDTO dto = new OrderDTO();
-        dto.setId(order.getId());
-        dto.setOrderDate(order.getOrderDate());
-        dto.setAmount(order.getAmount());
-        return dto;
-    }
-    
+   
     //3. update existing Order
     public OrderDTO updateOrder(Long orderId, OrderCreateDTO dto) {
         // Find the existing order else throw exception
@@ -83,6 +76,28 @@ public class OrderService {
         
         orderRepository.delete(order);
     }
+    
+    //5. get order by filtering start to end order date
+    public List<OrderDTO> getOrdersByDateRange(LocalDate start, LocalDate end) {
+        //Find filtered entities from repository
+        List<Order> orders = orderRepository.findByOrderDateBetween(start, end);
+        
+        //Convert entities to DTOs for the response
+        return orders.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+    
+    // Helper: convert Entity → DTO
+    private OrderDTO convertToDTO(Order order) {
+        OrderDTO dto = new OrderDTO();
+        dto.setId(order.getId());
+        dto.setOrderDate(order.getOrderDate());
+        dto.setAmount(order.getAmount());
+        return dto;
+    }
+    
+    
     
 
 }
