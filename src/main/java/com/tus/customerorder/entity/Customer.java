@@ -14,8 +14,9 @@ public class Customer {
 	private LocalDate createdAt;
 	
 	//one to many relationship one customer has many orders 
-	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true) 
 	//CascadeType all -> will delete customers with belonging orders
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true) 
+	
 	private List<Order> orders = new ArrayList<>();
 	
 	//constructor	

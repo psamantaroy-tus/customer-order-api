@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.management.relation.RelationNotFoundException;
+
 @Service
 public class OrderService {
 
@@ -55,4 +57,32 @@ public class OrderService {
         dto.setAmount(order.getAmount());
         return dto;
     }
+    
+    //3. update existing Order
+    public OrderDTO updateOrder(Long orderId, OrderCreateDTO dto) {
+        // Find the existing order else throw exception
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new RuntimeException("Order not found with id: " + orderId));
+
+        // Update the entity fields with data from the DTO
+        order.setOrderDate(dto.getOrderDate());
+        order.setAmount(dto.getAmount());
+
+        // Save the updated entity
+        Order updatedOrder = orderRepository.save(order);
+
+        //Return the result as a DTO
+        return convertToDTO(updatedOrder);
+    }
+    
+   //4. Cascade Delete order
+    public void deleteOrder(Long orderId) {
+        // Check if the order exists before attempting to delete
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new RuntimeException("Order not found with id: " + orderId));
+        
+        orderRepository.delete(order);
+    }
+    
+
 }

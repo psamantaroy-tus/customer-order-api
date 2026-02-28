@@ -29,4 +29,17 @@ public class OrderController {
     public List<OrderDTO> getOrdersByCustomer(@PathVariable Long customerId) {
         return orderService.getOrdersByCustomer(customerId);
     }
+    
+    //3) Update order for a customer  
+    @PutMapping("/{orderId}")
+    public OrderDTO updateOrder(@PathVariable Long orderId, 
+                                @RequestBody OrderCreateDTO dto) {
+        return orderService.updateOrder(orderId, dto);
+    }
+    
+    // 4) Delete Order 
+    @DeleteMapping("/{orderId}")
+    public void deleteOrder(@PathVariable Long orderId) {
+        orderService.deleteOrder(orderId);
+    }
 }

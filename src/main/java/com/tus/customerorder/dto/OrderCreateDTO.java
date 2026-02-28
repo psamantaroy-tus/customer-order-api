@@ -21,8 +21,8 @@ public class OrderCreateDTO {
 		return orderDate;
 	}
 
-	public void setOrderDte(LocalDate orderDate) {
-		orderDate = orderDate;
+	public void setOrderDate(LocalDate orderDate) {
+		this.orderDate = orderDate;
 	}
 
 	public double getAmount() {
