@@ -2,6 +2,7 @@ package com.tus.customerorder.dto;
 
 import java.time.LocalDate;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 public class OrderCreateDTO {
 	
@@ -9,8 +10,11 @@ public class OrderCreateDTO {
     @NotNull(message = "Order date is required")
     private LocalDate orderDate;
 
-    @NotNull(message = "Amount is required")   
+    @NotNull(message = "Amount is required")  
+    @Positive(message = "Should be amount > 0")
     private Double amount;
+    
+    //No id field stated here for customer 
 	
 	public OrderCreateDTO() {}
 

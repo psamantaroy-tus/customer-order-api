@@ -4,6 +4,7 @@ import com.tus.customerorder.dto.OrderDTO;
 import com.tus.customerorder.dto.OrderCreateDTO;
 import com.tus.customerorder.service.OrderService;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -21,7 +22,7 @@ public class OrderController {
     // 1) Create order for a customer
     @PostMapping("/create/{customerId}")
     public OrderDTO createOrder(@PathVariable Long customerId,
-                                @RequestBody OrderCreateDTO dto) {
+                               @Valid @RequestBody OrderCreateDTO dto) {
         return orderService.createOrder(customerId, dto);
     }
 
@@ -34,12 +35,12 @@ public class OrderController {
     //3) Update order for a customer  
     @PutMapping("/{orderId}")
     public OrderDTO updateOrder(@PathVariable Long orderId, 
-                                @RequestBody OrderCreateDTO dto) {
+                                @Valid@RequestBody OrderCreateDTO dto) {
         return orderService.updateOrder(orderId, dto);
     }
     
     // 4) Delete Order 
-    @DeleteMapping("/{orderId}")
+    @DeleteMapping("delete/{orderId}")
     public void deleteOrder(@PathVariable Long orderId) {
         orderService.deleteOrder(orderId);
     }

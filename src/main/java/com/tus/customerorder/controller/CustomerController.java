@@ -4,6 +4,7 @@ import com.tus.customerorder.dto.CustomerDTO;
 import com.tus.customerorder.dto.CustomerCreateDTO;
 import com.tus.customerorder.service.CustomerService;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 

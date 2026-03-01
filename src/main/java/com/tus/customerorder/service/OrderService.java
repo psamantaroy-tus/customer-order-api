@@ -104,7 +104,7 @@ public class OrderService {
         return orderPage.map(this::convertToDTO);
     }
    
-    // Helper: convert Entity → DTO
+    // Helper: convert Entity → DTO showing the  data mapping logic
     private OrderDTO convertToDTO(Order order) {
         OrderDTO dto = new OrderDTO();
         dto.setId(order.getId());
