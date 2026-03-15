@@ -64,3 +64,4 @@ out/
 
 # Spring Boot
 .spring-boot-devtools.properties
+/.apt_generated_tests/
